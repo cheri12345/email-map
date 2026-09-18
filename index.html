@@ -339,6 +339,15 @@
         color: hsl(var(--ink));
       }
 
+      .variant-label {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        color: hsl(var(--stone));
+        margin: 0 0 8px;
+      }
+
       .no-email-card {
         border: 1px solid hsl(var(--border));
         border-radius: 16px;
@@ -831,10 +840,13 @@
               <h3>Onboarding reminder</h3>
               <p class="trigger">
                 Sent once, if onboarding was started after approval but not finished (placeholder
-                timing: 48 hours after the last step. confirm with product).
+                timing: 48 hours after the last step. confirm with product). The copy changes
+                depending on how far they got.
               </p>
             </div>
           </div>
+
+          <p class="variant-label">If they stalled early, on organization, funding, or financial info</p>
           <div class="email-mock">
             <div class="email-head">
               <div class="email-avatar">C</div>
@@ -852,9 +864,32 @@
               <a class="email-cta" href="#">Continue onboarding</a>
             </div>
           </div>
+
+          <p class="variant-label">If they reached the documents step, closer to done</p>
+          <div class="email-mock">
+            <div class="email-head">
+              <div class="email-avatar">C</div>
+              <div>
+                <p class="email-from">CHELCIE <span>hello@chelciehq.com</span></p>
+                <p class="email-subject">You're almost there, just documents left</p>
+              </div>
+            </div>
+            <div class="email-body">
+              <p>Hi [Name],</p>
+              <p>
+                You started uploading documents for [Organization] but did not finish. You are on
+                the last step, just the documents and a quick review stand between you and being
+                submitted.
+              </p>
+              <a class="email-cta" href="#">Continue onboarding</a>
+            </div>
+          </div>
+
           <p class="why">
             <strong>Why:</strong> Sent once, not a drip campaign. Reassures that progress is saved so
-            restarting does not feel punishing.
+            restarting does not feel punishing. Someone who reached documents is closer to done, so
+            the nudge can say that directly instead of repeating the generic message. Detecting which
+            variant to send needs step-level progress tracking, not just whether a session started.
           </p>
         </div>
 
