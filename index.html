@@ -530,86 +530,123 @@
         <div class="journey-head">
           <h2>The whole flow, at a glance</h2>
           <p>
-            Boxes are states, arrows are what triggers the next one. Dashed means shared or
-            conditional, not guaranteed to send.
+            Boxes are states, arrows are what triggers the next one. Two separate flows, click
+            either one to expand it.
           </p>
         </div>
 
-        <svg class="flow-diagram" viewBox="0 0 720 680" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
-              <path d="M0,0 L10,5 L0,10 Z" class="flow-arrow-fill" />
-            </marker>
-          </defs>
+        <details class="accordion diagram-accordion" open>
+          <summary class="journey-head">
+            <span class="journey-tag">Sign up flow</span>
+            <span class="accordion-chevron">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </span>
+            <h2>Sign up &rarr; onboarding</h2>
+            <p>No wait, so almost no email.</p>
+          </summary>
+          <div class="accordion-body">
+            <svg class="flow-diagram" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="arrowhead-b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+                  <path d="M0,0 L10,5 L0,10 Z" class="flow-arrow-fill" />
+                </marker>
+              </defs>
 
-          <!-- entry points -->
-          <rect class="flow-box" x="20" y="20" width="300" height="50" rx="10" />
-          <text class="flow-text" x="170" y="50" font-size="13">Request Access submitted</text>
+              <rect class="flow-box" x="50" y="20" width="300" height="50" rx="10" />
+              <text class="flow-text" x="200" y="50" font-size="13">Sign Up submitted</text>
 
-          <rect class="flow-box" x="400" y="20" width="300" height="50" rx="10" />
-          <text class="flow-text" x="550" y="50" font-size="13">Sign Up submitted</text>
+              <rect class="flow-box shared" x="50" y="110" width="300" height="56" rx="10" />
+              <text class="flow-text" x="200" y="133" font-size="13">0 &middot; Welcome, verify email</text>
+              <text class="flow-caption" x="200" y="151" font-size="11">sent immediately</text>
 
-          <!-- shared verify step -->
-          <rect class="flow-box shared" x="110" y="110" width="500" height="56" rx="10" />
-          <text class="flow-text" x="360" y="133" font-size="13">0 &middot; Welcome, verify email</text>
-          <text class="flow-caption" x="360" y="151" font-size="11">sent immediately, both paths</text>
+              <rect class="flow-box" x="50" y="206" width="300" height="56" rx="10" />
+              <text class="flow-text" x="200" y="228" font-size="12.5">Onboarding, fully in-app</text>
+              <text class="flow-caption" x="200" y="246" font-size="11">no email involved</text>
 
-          <!-- diverge: receipt vs straight to onboarding -->
-          <rect class="flow-box" x="20" y="206" width="300" height="50" rx="10" />
-          <text class="flow-text" x="170" y="236" font-size="13">1 &middot; Receipt confirmation</text>
+              <path class="flow-line" d="M200,70 L200,110" marker-end="url(#arrowhead-b)" />
+              <path class="flow-line" d="M200,166 L200,206" marker-end="url(#arrowhead-b)" />
+            </svg>
 
-          <rect class="flow-box" x="400" y="206" width="300" height="56" rx="10" />
-          <text class="flow-text" x="550" y="228" font-size="12.5">Onboarding, fully in-app</text>
-          <text class="flow-caption" x="550" y="246" font-size="11">no email involved</text>
+            <div class="flow-legend">
+              <span><span class="swatch shared"></span>Dashed: shared step, not a product decision</span>
+            </div>
+          </div>
+        </details>
 
-          <!-- approve / reject branch -->
-          <rect class="flow-box approve" x="20" y="302" width="145" height="58" rx="10" />
-          <text class="flow-text" x="92.5" y="325" font-size="11.5">2 &middot; Approved,</text>
-          <text class="flow-text" x="92.5" y="342" font-size="11.5">invited to onboard</text>
+        <details class="accordion diagram-accordion">
+          <summary class="journey-head">
+            <span class="journey-tag">Request Access flow</span>
+            <span class="accordion-chevron">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </span>
+            <h2>Request Access &rarr; approval (if needed)</h2>
+            <p>There is a wait while a real person reviews the request, so email fills that gap.</p>
+          </summary>
+          <div class="accordion-body">
+            <svg class="flow-diagram" viewBox="0 0 600 680" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="arrowhead-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+                  <path d="M0,0 L10,5 L0,10 Z" class="flow-arrow-fill" />
+                </marker>
+              </defs>
 
-          <rect class="flow-box end" x="175" y="302" width="145" height="58" rx="10" />
-          <text class="flow-text" x="247.5" y="325" font-size="11.5">3 &middot; Not approved</text>
-          <text class="flow-text" x="247.5" y="342" font-size="11.5">(with reason)</text>
-          <text class="flow-caption" x="247.5" y="374" font-size="10.5">No further email sent</text>
+              <rect class="flow-box" x="20" y="20" width="300" height="50" rx="10" />
+              <text class="flow-text" x="170" y="50" font-size="13">Request Access submitted</text>
 
-          <!-- onboarding progress + reminder loop -->
-          <rect class="flow-box" x="20" y="398" width="300" height="50" rx="10" />
-          <text class="flow-text" x="170" y="428" font-size="13">Onboarding in progress</text>
+              <rect class="flow-box shared" x="20" y="110" width="300" height="56" rx="10" />
+              <text class="flow-text" x="170" y="133" font-size="13">0 &middot; Welcome, verify email</text>
+              <text class="flow-caption" x="170" y="151" font-size="11">sent immediately</text>
 
-          <rect class="flow-box dashed" x="360" y="398" width="200" height="50" rx="10" />
-          <text class="flow-text" x="460" y="418" font-size="11.5">4 &middot; Reminder</text>
-          <text class="flow-caption" x="460" y="435" font-size="10.5">if stalled 48h</text>
+              <rect class="flow-box" x="20" y="206" width="300" height="50" rx="10" />
+              <text class="flow-text" x="170" y="236" font-size="13">1 &middot; Receipt confirmation</text>
 
-          <!-- completion -->
-          <rect class="flow-box" x="20" y="494" width="300" height="50" rx="10" />
-          <text class="flow-text" x="170" y="524" font-size="13">Onboarding completed</text>
+              <rect class="flow-box approve" x="20" y="302" width="145" height="58" rx="10" />
+              <text class="flow-text" x="92.5" y="325" font-size="11.5">2 &middot; Approved,</text>
+              <text class="flow-text" x="92.5" y="342" font-size="11.5">invited to onboard</text>
 
-          <rect class="flow-box" x="20" y="590" width="300" height="50" rx="10" />
-          <text class="flow-text" x="170" y="620" font-size="12.5">5 &middot; Documents submitted confirmation</text>
+              <rect class="flow-box end" x="175" y="302" width="145" height="58" rx="10" />
+              <text class="flow-text" x="247.5" y="325" font-size="11.5">3 &middot; Not approved</text>
+              <text class="flow-text" x="247.5" y="342" font-size="11.5">(with reason)</text>
+              <text class="flow-caption" x="247.5" y="374" font-size="10.5">No further email sent</text>
 
-          <!-- connectors -->
-          <path class="flow-line" d="M170,70 L200,110" marker-end="url(#arrowhead)" />
-          <path class="flow-line" d="M550,70 L520,110" marker-end="url(#arrowhead)" />
-          <path class="flow-line" d="M200,166 L170,206" marker-end="url(#arrowhead)" />
-          <path class="flow-line" d="M520,166 L550,206" marker-end="url(#arrowhead)" />
-          <path class="flow-line" d="M170,256 L92.5,302" marker-end="url(#arrowhead)" />
-          <path class="flow-line" d="M170,256 L247.5,302" marker-end="url(#arrowhead)" />
-          <text class="flow-label" x="70" y="290" font-size="10.5">if approved</text>
-          <text class="flow-label" x="278" y="290" font-size="10.5">if not</text>
-          <path class="flow-line" d="M92.5,360 L170,398" marker-end="url(#arrowhead)" />
-          <path class="flow-line" d="M170,448 L170,494" marker-end="url(#arrowhead)" />
-          <path class="flow-line" d="M170,544 L170,590" marker-end="url(#arrowhead)" />
+              <rect class="flow-box" x="20" y="398" width="300" height="50" rx="10" />
+              <text class="flow-text" x="170" y="428" font-size="13">Onboarding in progress</text>
 
-          <!-- reminder side loop -->
-          <path class="flow-line dashed" d="M320,415 C345,415 345,415 360,417" marker-end="url(#arrowhead)" />
-          <path class="flow-line dashed" d="M460,448 C460,485 340,510 320,516" marker-end="url(#arrowhead)" />
-        </svg>
+              <rect class="flow-box dashed" x="360" y="398" width="200" height="50" rx="10" />
+              <text class="flow-text" x="460" y="418" font-size="11.5">4 &middot; Reminder</text>
+              <text class="flow-caption" x="460" y="435" font-size="10.5">if stalled 48h</text>
 
-        <div class="flow-legend">
-          <span><span class="swatch shared"></span>Dashed: shared or conditional, not guaranteed</span>
-          <span><span class="swatch approve"></span>Positive outcome, has a CTA</span>
-          <span><span class="swatch end"></span>End state, no further email</span>
-        </div>
+              <rect class="flow-box" x="20" y="494" width="300" height="50" rx="10" />
+              <text class="flow-text" x="170" y="524" font-size="13">Onboarding completed</text>
+
+              <rect class="flow-box" x="20" y="590" width="300" height="50" rx="10" />
+              <text class="flow-text" x="170" y="620" font-size="12.5">5 &middot; Documents submitted confirmation</text>
+
+              <path class="flow-line" d="M170,70 L170,110" marker-end="url(#arrowhead-a)" />
+              <path class="flow-line" d="M170,166 L170,206" marker-end="url(#arrowhead-a)" />
+              <path class="flow-line" d="M170,256 L92.5,302" marker-end="url(#arrowhead-a)" />
+              <path class="flow-line" d="M170,256 L247.5,302" marker-end="url(#arrowhead-a)" />
+              <text class="flow-label" x="70" y="290" font-size="10.5">if approved</text>
+              <text class="flow-label" x="278" y="290" font-size="10.5">if not</text>
+              <path class="flow-line" d="M92.5,360 L170,398" marker-end="url(#arrowhead-a)" />
+              <path class="flow-line" d="M170,448 L170,494" marker-end="url(#arrowhead-a)" />
+              <path class="flow-line" d="M170,544 L170,590" marker-end="url(#arrowhead-a)" />
+
+              <path class="flow-line dashed" d="M320,415 C345,415 345,415 360,417" marker-end="url(#arrowhead-a)" />
+              <path class="flow-line dashed" d="M460,448 C460,485 340,510 320,516" marker-end="url(#arrowhead-a)" />
+            </svg>
+
+            <div class="flow-legend">
+              <span><span class="swatch shared"></span>Dashed: shared or conditional, not guaranteed</span>
+              <span><span class="swatch approve"></span>Positive outcome, has a CTA</span>
+              <span><span class="swatch end"></span>End state, no further email</span>
+            </div>
+          </div>
+        </details>
       </section>
 
       <section class="journey">
