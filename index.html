@@ -142,6 +142,11 @@
         margin-bottom: 12px;
       }
 
+      .journey-tag.shared {
+        color: hsl(var(--stone));
+        background: hsl(var(--border) / 0.6);
+      }
+
       .journey-head h2 {
         font-size: 21px;
         font-weight: 800;
@@ -372,6 +377,50 @@
 
       <section class="journey">
         <div class="journey-head">
+          <span class="journey-tag shared">Both paths</span>
+          <h2>Account creation</h2>
+          <p>Verifying an email address is a security step, not a product decision, so it applies no matter which path someone takes.</p>
+        </div>
+
+        <div class="touchpoint">
+          <div class="touchpoint-meta">
+            <span class="step-num">0</span>
+            <div>
+              <h3>Welcome, verify your email</h3>
+              <p class="trigger">
+                Sent immediately after either Request Access or Sign Up is submitted, before anything
+                else.
+              </p>
+            </div>
+          </div>
+          <div class="email-mock">
+            <div class="email-head">
+              <div class="email-avatar">C</div>
+              <div>
+                <p class="email-from">CHELCIE <span>hello@chelciehq.com</span></p>
+                <p class="email-subject">Welcome to CHELCIE. Confirm your email to get started.</p>
+              </div>
+            </div>
+            <div class="email-body">
+              <p>Hi [Name],</p>
+              <p>Welcome to CHELCIE. Before anything else, confirm this is your email address.</p>
+              <a class="email-cta" href="#">Confirm email</a>
+              <p style="margin-top: 14px">
+                This link expires in 24 hours. If you didn't sign up for CHELCIE, you can ignore this
+                email.
+              </p>
+            </div>
+          </div>
+          <p class="why">
+            <strong>Why:</strong> Combines the welcome and the verification into one email instead of
+            two. This is the one exception on the Sign Up path too, since any account needs a
+            confirmed address no matter what happens next in-app.
+          </p>
+        </div>
+      </section>
+
+      <section class="journey">
+        <div class="journey-head">
           <span class="journey-tag">Path A</span>
           <h2>Request Access &rarr; approval</h2>
           <p>There is a wait while a real person reviews the request, so email fills that gap.</p>
@@ -565,7 +614,7 @@
         <div class="journey-head">
           <span class="journey-tag">Path B</span>
           <h2>Sign up &rarr; onboarding</h2>
-          <p>No wait, so no email. The product carries the confirmation instead.</p>
+          <p>No wait, so no onboarding email beyond the shared welcome and verify step above.</p>
         </div>
 
         <div class="no-email-card">
@@ -576,11 +625,12 @@
             </svg>
           </div>
           <div>
-            <h3>No email sent</h3>
+            <h3>Nothing past the welcome email</h3>
             <p>
               Sign Up leads straight into onboarding inside the product, so there is no waiting period
-              to fill. The onboarding screens carry the confirmation and next-step messaging
-              themselves: the time estimate, phase progress, and a review step before submitting.
+              to fill. Past the shared welcome and verify step, the onboarding screens carry the
+              confirmation and next-step messaging themselves: the time estimate, phase progress, and
+              a review step before submitting.
             </p>
           </div>
         </div>
