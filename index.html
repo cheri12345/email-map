@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email map — CHELCIE Prototype</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: 240 4% 4%;
+        --paper: 60 20% 98%;
+        --teal: 159 50% 62%;
+        --stone: 42 4% 41%;
+        --border: 43 20% 88%;
+        --destructive: 15 62% 47%;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: hsl(var(--paper));
+        color: hsl(var(--ink));
+        font-family: "Inter", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1, h2, h3 {
+        font-family: "Archivo", system-ui, sans-serif;
+        margin: 0;
+      }
+
+      .page {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 48px 24px 96px;
+      }
+
+      header {
+        margin-bottom: 40px;
+      }
+
+      .wordmark {
+        display: inline-block;
+        font-family: "Archivo", system-ui, sans-serif;
+        font-weight: 800;
+        font-size: 15px;
+        letter-spacing: -0.01em;
+        color: hsl(var(--ink));
+        text-decoration: none;
+        margin-bottom: 28px;
+      }
+
+      .wordmark sup {
+        font-size: 9px;
+        font-weight: 700;
+      }
+
+      h1 {
+        font-size: 30px;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        font-size: 15px;
+        color: hsl(var(--stone));
+        line-height: 1.6;
+        margin: 0;
+        max-width: 520px;
+      }
+
+      .principles {
+        background: hsl(var(--ink));
+        color: hsl(var(--paper));
+        border-radius: 16px;
+        padding: 26px 28px;
+        margin-bottom: 48px;
+      }
+
+      .principles h2 {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: hsl(var(--paper) / 0.55);
+        margin-bottom: 16px;
+      }
+
+      .principles ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+      }
+
+      .principles li {
+        font-size: 14px;
+        line-height: 1.5;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .principles li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: hsl(var(--teal));
+      }
+
+      .journey {
+        margin-bottom: 56px;
+      }
+
+      .journey-head {
+        margin-bottom: 24px;
+      }
+
+      .journey-tag {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: hsl(var(--teal) / 0.9);
+        background: hsl(var(--teal) / 0.14);
+        padding: 4px 10px;
+        border-radius: 999px;
+        margin-bottom: 12px;
+      }
+
+      .journey-head h2 {
+        font-size: 21px;
+        font-weight: 800;
+        margin-bottom: 8px;
+      }
+
+      .journey-head p {
+        font-size: 14px;
+        color: hsl(var(--stone));
+        line-height: 1.6;
+        margin: 0;
+        max-width: 520px;
+      }
+
+      .touchpoint {
+        border: 1px solid hsl(var(--border));
+        border-radius: 16px;
+        padding: 24px;
+        margin-bottom: 18px;
+        background: hsl(0 0% 100% / 0.5);
+      }
+
+      .touchpoint-meta {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        margin-bottom: 18px;
+      }
+
+      .step-num {
+        flex-shrink: 0;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: hsl(var(--ink));
+        color: hsl(var(--paper));
+        font-family: "Archivo", system-ui, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .touchpoint-meta h3 {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+
+      .trigger {
+        font-size: 13px;
+        color: hsl(var(--stone));
+        margin: 0;
+        line-height: 1.5;
+      }
+
+      .email-mock {
+        border: 1px solid hsl(var(--border));
+        border-radius: 12px;
+        background: hsl(var(--paper));
+        overflow: hidden;
+        margin-bottom: 16px;
+      }
+
+      .email-head {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 18px;
+        border-bottom: 1px solid hsl(var(--border));
+      }
+
+      .email-avatar {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: hsl(var(--teal) / 0.2);
+        color: hsl(var(--ink));
+        font-family: "Archivo", system-ui, sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .email-from {
+        font-size: 12.5px;
+        font-weight: 600;
+        margin: 0 0 2px;
+      }
+
+      .email-from span {
+        font-weight: 400;
+        color: hsl(var(--stone));
+      }
+
+      .email-subject {
+        font-size: 14.5px;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .email-body {
+        padding: 18px 20px 20px;
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .email-body p {
+        margin: 0 0 12px;
+      }
+
+      .email-body p:last-child {
+        margin-bottom: 0;
+      }
+
+      .email-cta {
+        display: inline-block;
+        background: hsl(var(--teal));
+        color: hsl(var(--ink));
+        font-weight: 700;
+        font-size: 13.5px;
+        text-decoration: none;
+        padding: 10px 18px;
+        border-radius: 8px;
+        margin-top: 4px;
+      }
+
+      .reason-list {
+        display: grid;
+        gap: 8px;
+        margin: 10px 0 12px;
+      }
+
+      .reason-list .reason {
+        background: hsl(var(--border) / 0.5);
+        border-radius: 8px;
+        padding: 10px 12px;
+        font-size: 13.5px;
+        line-height: 1.5;
+      }
+
+      .reason-list .reason strong {
+        display: block;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: hsl(var(--stone));
+        margin-bottom: 3px;
+      }
+
+      .why {
+        font-size: 13px;
+        color: hsl(var(--stone));
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .why strong {
+        color: hsl(var(--ink));
+      }
+
+      .no-email-card {
+        border: 1px solid hsl(var(--border));
+        border-radius: 16px;
+        padding: 24px;
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+      }
+
+      .no-email-icon {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid hsl(var(--stone) / 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .no-email-card h3 {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+
+      .no-email-card p {
+        font-size: 14px;
+        color: hsl(var(--stone));
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      footer {
+        border-top: 1px solid hsl(var(--border));
+        padding-top: 24px;
+        font-size: 13px;
+        color: hsl(var(--stone));
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <a class="wordmark" href="https://chelciehq.com">CHELCIE<sup>™</sup></a>
+        <h1>Email map</h1>
+        <p class="subtitle">
+          What we send, when, and why. For reviewing message content and send triggers before anything ships.
+        </p>
+      </header>
+
+      <section class="principles">
+        <h2>Ground rules for every email</h2>
+        <ul>
+          <li>One email, one purpose, one clear action.</li>
+          <li>Always state a real timeframe. Never "soon."</li>
+          <li>One short line on data privacy, not a policy page.</li>
+          <li>Never more than one email per state change. Merge, do not stack.</li>
+          <li>Same sender name every time, so it is recognizable.</li>
+        </ul>
+      </section>
+
+      <section class="journey">
+        <div class="journey-head">
+          <span class="journey-tag">Path A</span>
+          <h2>Request Access &rarr; approval</h2>
+          <p>There is a wait while a real person reviews the request, so email fills that gap.</p>
+        </div>
+
+        <div class="touchpoint">
+          <div class="touchpoint-meta">
+            <span class="step-num">1</span>
+            <div>
+              <h3>Receipt confirmation</h3>
+              <p class="trigger">Sent immediately after the Request Access form is submitted.</p>
+            </div>
+          </div>
+          <div class="email-mock">
+            <div class="email-head">
+              <div class="email-avatar">C</div>
+              <div>
+                <p class="email-from">CHELCIE <span>hello@chelciehq.com</span></p>
+                <p class="email-subject">We've received your request</p>
+              </div>
+            </div>
+            <div class="email-body">
+              <p>Hi [Name],</p>
+              <p>
+                Thanks for reaching out about [Organization]. A real person will review your request
+                and get back to you within 24 hours.
+              </p>
+              <p>
+                There is nothing else you need to do right now. We will never share your information
+                without your permission.
+              </p>
+              <p>Talk soon,<br />The CHELCIE team</p>
+            </div>
+          </div>
+          <p class="why">
+            <strong>Why:</strong> Restates the same 24-hour window already shown on the sign-up page,
+            so the promise matches what they just read. No CTA, since there is no action to take yet.
+          </p>
+        </div>
+
+        <div class="touchpoint">
+          <div class="touchpoint-meta">
+            <span class="step-num">2</span>
+            <div>
+              <h3>Approved, invited to onboard</h3>
+              <p class="trigger">Sent when a reviewer approves the request.</p>
+            </div>
+          </div>
+          <div class="email-mock">
+            <div class="email-head">
+              <div class="email-avatar">C</div>
+              <div>
+                <p class="email-from">CHELCIE <span>hello@chelciehq.com</span></p>
+                <p class="email-subject">You're in. Let's connect your organization.</p>
+              </div>
+            </div>
+            <div class="email-body">
+              <p>Hi [Name],</p>
+              <p>
+                Good news, [Organization] has been approved. The next step is a short onboarding to
+                connect your organization: basic info, your funding need, and a few documents. It
+                takes about 7 minutes.
+              </p>
+              <a class="email-cta" href="#">Continue to onboarding</a>
+              <p style="margin-top: 14px">
+                If anything looks off or you have questions, just reply to this email.
+              </p>
+            </div>
+          </div>
+          <p class="why">
+            <strong>Why:</strong> One clear CTA. Restates the 7-minute estimate used inside onboarding
+            itself, so expectations match what they see next. No mention of internal review or scoring.
+          </p>
+        </div>
+
+        <div class="touchpoint">
+          <div class="touchpoint-meta">
+            <span class="step-num">3</span>
+            <div>
+              <h3>Not approved</h3>
+              <p class="trigger">Sent when a reviewer decides not to move forward with the request.</p>
+            </div>
+          </div>
+          <div class="email-mock">
+            <div class="email-head">
+              <div class="email-avatar">C</div>
+              <div>
+                <p class="email-from">CHELCIE <span>hello@chelciehq.com</span></p>
+                <p class="email-subject">An update on your CHELCIE request</p>
+              </div>
+            </div>
+            <div class="email-body">
+              <p>Hi [Name],</p>
+              <p>
+                Thanks for your interest in CHELCIE. After review, we're not able to move forward with
+                [Organization] right now.
+              </p>
+              <div class="reason-list">
+                <div class="reason">
+                  <strong>Example reason A</strong>
+                  We're currently only able to support [entity type] organizations, and this does not
+                  look like a match.
+                </div>
+                <div class="reason">
+                  <strong>Example reason B</strong>
+                  We weren't able to verify [Organization] as an active organization. If this is a
+                  mistake, reply to this email and we'll take another look.
+                </div>
+              </div>
+              <p>
+                This is not a reflection of your work, just where we're able to help today. You're
+                welcome to check back as our criteria expand.
+              </p>
+            </div>
+          </div>
+          <p class="why">
+            <strong>Why:</strong> Always give a real, specific reason, never a generic "not approved."
+            Offer a path to appeal by replying, rather than a dead end. Pick one reason per case, don't
+            send both.
+          </p>
+        </div>
+
+        <div class="touchpoint">
+          <div class="touchpoint-meta">
+            <span class="step-num">4</span>
+            <div>
+              <h3>Onboarding reminder</h3>
+              <p class="trigger">
+                Sent once, if onboarding was started after approval but not finished (placeholder
+                timing: 48 hours after the last step. confirm with product).
+              </p>
+            </div>
+          </div>
+          <div class="email-mock">
+            <div class="email-head">
+              <div class="email-avatar">C</div>
+              <div>
+                <p class="email-from">CHELCIE <span>hello@chelciehq.com</span></p>
+                <p class="email-subject">Pick up where you left off</p>
+              </div>
+            </div>
+            <div class="email-body">
+              <p>Hi [Name],</p>
+              <p>
+                You started connecting [Organization] to CHELCIE but did not finish. It only takes
+                about 7 minutes, and your progress has been saved.
+              </p>
+              <a class="email-cta" href="#">Continue onboarding</a>
+            </div>
+          </div>
+          <p class="why">
+            <strong>Why:</strong> Sent once, not a drip campaign. Reassures that progress is saved so
+            restarting does not feel punishing.
+          </p>
+        </div>
+
+        <div class="touchpoint">
+          <div class="touchpoint-meta">
+            <span class="step-num">5</span>
+            <div>
+              <h3>Documents submitted</h3>
+              <p class="trigger">Sent when onboarding is completed and submitted for review.</p>
+            </div>
+          </div>
+          <div class="email-mock">
+            <div class="email-head">
+              <div class="email-avatar">C</div>
+              <div>
+                <p class="email-from">CHELCIE <span>hello@chelciehq.com</span></p>
+                <p class="email-subject">We've received your submission</p>
+              </div>
+            </div>
+            <div class="email-body">
+              <p>Hi [Name],</p>
+              <p>
+                Thanks, we've received [Organization]'s full submission: organization details,
+                funding need, and documents. Our team will review everything and follow up within
+                [X business days].
+              </p>
+              <p>You don't need to do anything else right now. If we need more information, we'll reach out directly.</p>
+            </div>
+          </div>
+          <p class="why">
+            <strong>Why:</strong> Confirms exactly what was received, which builds trust that nothing
+            was lost. States a follow-up window as a placeholder, confirm the real SLA before shipping.
+          </p>
+        </div>
+      </section>
+
+      <section class="journey">
+        <div class="journey-head">
+          <span class="journey-tag">Path B</span>
+          <h2>Sign up &rarr; onboarding</h2>
+          <p>No wait, so no email. The product carries the confirmation instead.</p>
+        </div>
+
+        <div class="no-email-card">
+          <div class="no-email-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="5" y1="19" x2="19" y2="5" />
+            </svg>
+          </div>
+          <div>
+            <h3>No email sent</h3>
+            <p>
+              Sign Up leads straight into onboarding inside the product, so there is no waiting period
+              to fill. The onboarding screens carry the confirmation and next-step messaging
+              themselves: the time estimate, phase progress, and a review step before submitting.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <p>
+          Error and rejection screens inside the product itself (an expired invite link, a failed
+          upload) are intentionally out of scope for this pass. This is just the email layer.
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
