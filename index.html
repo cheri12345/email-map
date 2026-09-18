@@ -553,33 +553,103 @@
               </svg>
             </span>
             <h2>Sign up &rarr; onboarding</h2>
-            <p>No wait, so almost no email.</p>
+            <p>No wait, so almost no email, except a nudge if they stall on documents.</p>
           </summary>
           <div class="accordion-body">
-            <svg class="flow-diagram" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+            <svg class="flow-diagram" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <marker id="arrowhead-b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
                   <path d="M0,0 L10,5 L0,10 Z" class="flow-arrow-fill" />
                 </marker>
               </defs>
 
-              <rect class="flow-box" x="50" y="20" width="300" height="50" rx="10" />
-              <text class="flow-text" x="200" y="50" font-size="13">Sign Up submitted</text>
+              <rect class="flow-box" x="20" y="20" width="300" height="50" rx="10" />
+              <text class="flow-text" x="170" y="50" font-size="13">Sign Up submitted</text>
 
-              <rect class="flow-box shared" x="50" y="110" width="300" height="56" rx="10" />
-              <text class="flow-text" x="200" y="133" font-size="13">0 &middot; Welcome, verify email</text>
-              <text class="flow-caption" x="200" y="151" font-size="11">sent immediately</text>
+              <rect class="flow-box shared" x="20" y="110" width="300" height="56" rx="10" />
+              <text class="flow-text" x="170" y="133" font-size="13">0 &middot; Welcome, verify email</text>
+              <text class="flow-caption" x="170" y="151" font-size="11">sent immediately</text>
 
-              <rect class="flow-box" x="50" y="206" width="300" height="56" rx="10" />
-              <text class="flow-text" x="200" y="228" font-size="12.5">Onboarding, fully in-app</text>
-              <text class="flow-caption" x="200" y="246" font-size="11">no email involved</text>
+              <rect class="flow-box" x="20" y="206" width="300" height="50" rx="10" />
+              <text class="flow-text" x="170" y="236" font-size="13">Onboarding in progress</text>
 
-              <path class="flow-line" d="M200,70 L200,110" marker-end="url(#arrowhead-b)" />
-              <path class="flow-line" d="M200,166 L200,206" marker-end="url(#arrowhead-b)" />
+              <rect class="flow-box dashed" x="360" y="206" width="200" height="50" rx="10" />
+              <text class="flow-text" x="460" y="226" font-size="11.5">4 &middot; Reminder</text>
+              <text class="flow-caption" x="460" y="243" font-size="10.5">if stalled</text>
+
+              <rect class="flow-box" x="20" y="302" width="300" height="56" rx="10" />
+              <text class="flow-text" x="170" y="325" font-size="13">Onboarding completed</text>
+              <text class="flow-caption" x="170" y="343" font-size="11">no confirmation email</text>
+
+              <path class="flow-line" d="M170,70 L170,110" marker-end="url(#arrowhead-b)" />
+              <path class="flow-line" d="M170,166 L170,206" marker-end="url(#arrowhead-b)" />
+              <path class="flow-line" d="M170,256 L170,302" marker-end="url(#arrowhead-b)" />
+              <path class="flow-line dashed" d="M320,231 L360,231" marker-end="url(#arrowhead-b)" />
+              <path class="flow-line dashed" d="M460,256 C460,290 340,315 320,325" marker-end="url(#arrowhead-b)" />
             </svg>
 
             <div class="flow-legend">
-              <span><span class="swatch shared"></span>Dashed: shared step, not a product decision</span>
+              <span><span class="swatch shared"></span>Dashed: shared or conditional, not guaranteed to send</span>
+            </div>
+
+            <div class="touchpoint" style="margin-top: 24px">
+              <div class="touchpoint-meta">
+                <span class="step-num">4</span>
+                <div>
+                  <h3>Onboarding reminder</h3>
+                  <p class="trigger">
+                    Sent once, if onboarding was started but not finished (placeholder timing: 48
+                    hours after the last step. confirm with product). Same reminder as the Request
+                    Access flow, shown in full here since Sign Up leads into the same onboarding.
+                  </p>
+                </div>
+              </div>
+
+              <p class="variant-label">If they stalled early, on organization, funding, or financial info</p>
+              <div class="email-mock">
+                <div class="email-head">
+                  <div class="email-avatar">C</div>
+                  <div>
+                    <p class="email-from">CHELCIE <span>hello@chelciehq.com</span></p>
+                    <p class="email-subject">Pick up where you left off</p>
+                  </div>
+                </div>
+                <div class="email-body">
+                  <p>Hi [Name],</p>
+                  <p>
+                    You started connecting [Organization] to CHELCIE but did not finish. It only
+                    takes about 7 minutes, and your progress has been saved.
+                  </p>
+                  <a class="email-cta" href="#">Continue onboarding</a>
+                </div>
+              </div>
+
+              <p class="variant-label">If they reached the documents step, closer to done</p>
+              <div class="email-mock">
+                <div class="email-head">
+                  <div class="email-avatar">C</div>
+                  <div>
+                    <p class="email-from">CHELCIE <span>hello@chelciehq.com</span></p>
+                    <p class="email-subject">You're almost there, just documents left</p>
+                  </div>
+                </div>
+                <div class="email-body">
+                  <p>Hi [Name],</p>
+                  <p>
+                    You started uploading documents for [Organization] but did not finish. You are
+                    on the last step, just the documents and a quick review stand between you and
+                    being submitted.
+                  </p>
+                  <a class="email-cta" href="#">Continue onboarding</a>
+                </div>
+              </div>
+
+              <p class="why">
+                <strong>Why:</strong> Sent once, not a drip campaign. Reassures that progress is
+                saved so restarting does not feel punishing. This is the one exception to "no email"
+                on Sign Up, since the risk of stalling out lives in onboarding itself, not in which
+                door someone came through.
+              </p>
             </div>
           </div>
         </details>
