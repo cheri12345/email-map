@@ -147,6 +147,33 @@
         background: hsl(var(--border) / 0.6);
       }
 
+      details.accordion summary.journey-head {
+        cursor: pointer;
+        list-style: none;
+        position: relative;
+        padding-right: 32px;
+      }
+
+      details.accordion summary.journey-head::-webkit-details-marker {
+        display: none;
+      }
+
+      .accordion-chevron {
+        position: absolute;
+        top: 2px;
+        right: 0;
+        color: hsl(var(--stone));
+        transition: transform 0.2s ease;
+      }
+
+      details.accordion[open] .accordion-chevron {
+        transform: rotate(180deg);
+      }
+
+      details.accordion .accordion-body {
+        padding-top: 24px;
+      }
+
       .journey-head h2 {
         font-size: 21px;
         font-weight: 800;
@@ -420,11 +447,18 @@
       </section>
 
       <section class="journey">
-        <div class="journey-head">
-          <span class="journey-tag">Path A</span>
-          <h2>Request Access &rarr; approval</h2>
-          <p>There is a wait while a real person reviews the request, so email fills that gap.</p>
-        </div>
+        <details class="accordion">
+          <summary class="journey-head">
+            <span class="journey-tag">Path A</span>
+            <span class="accordion-chevron">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </span>
+            <h2>Request Access &rarr; approval</h2>
+            <p>There is a wait while a real person reviews the request, so email fills that gap. Click to expand all 5 touchpoints.</p>
+          </summary>
+          <div class="accordion-body">
 
         <div class="touchpoint">
           <div class="touchpoint-meta">
@@ -608,6 +642,9 @@
             was lost. States a follow-up window as a placeholder, confirm the real SLA before shipping.
           </p>
         </div>
+
+          </div>
+        </details>
       </section>
 
       <section class="journey">
