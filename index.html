@@ -592,8 +592,8 @@
               <span><span class="swatch shared"></span>Dashed: shared or conditional, not guaranteed to send</span>
             </div>
 
-            <div class="touchpoint" style="margin-top: 24px">
-              <div class="touchpoint-meta">
+            <details class="accordion touchpoint" style="margin-top: 24px">
+              <summary class="touchpoint-meta journey-head">
                 <span class="step-num">4</span>
                 <div>
                   <h3>Onboarding reminder</h3>
@@ -601,9 +601,16 @@
                     Sent once, if onboarding was started but not finished (placeholder timing: 48
                     hours after the last step. confirm with product). Same reminder as the Request
                     Access flow, shown in full here since Sign Up leads into the same onboarding.
+                    Click to see the email templates.
                   </p>
                 </div>
-              </div>
+                <span class="accordion-chevron">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </span>
+              </summary>
+              <div class="accordion-body">
 
               <p class="variant-label">If they stalled early, on organization, funding, or financial info</p>
               <div class="email-mock">
@@ -650,7 +657,8 @@
                 on Sign Up, since the risk of stalling out lives in onboarding itself, not in which
                 door someone came through.
               </p>
-            </div>
+              </div>
+            </details>
           </div>
         </details>
 
